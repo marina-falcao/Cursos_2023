@@ -1,5 +1,5 @@
 # Cursos_2023
-Notebooks de cursos variados feitos em 2023:
+Notebooks e arquivos de cursos variados feitos em 2023:
 
 * Estatística partes I e II
 * Data Science - introdução a testes
