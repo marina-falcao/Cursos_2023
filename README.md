@@ -10,3 +10,5 @@ Notebooks de cursos variados feitos em 2023:
 * Python para Data Science - Numpy
 * Python para Data Science - Pandas
 * Lógica de Programação
+* Power BI - crie um dashboard
+* Power BI - tipos de gráficos
