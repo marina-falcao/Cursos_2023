@@ -31,7 +31,7 @@ idades[4]
 idades
 
 for idade in idades:
-  print(idade)
+    print(idade)
 
 idades.remove(30)
 
@@ -40,7 +40,7 @@ idades
 28 in idades
 
 if 15 in idades:
-  idades.remove(15)
+    idades.remove(15)
 
 idades.insert(0, 20)
 
@@ -56,24 +56,25 @@ for idade in idades:
     idades_ano_seguinte.append(idade + 1)
 idades_ano_seguinte
 
-[(idade+1) for idade in idades]
+[(idade + 1) for idade in idades]
 
 [(idade) for idade in idades if idade > 21]
 
 
-
 """**Objetos próprios**"""
 
-class ContaCorrente:
-  def __init__(self, codigo):
-    self.codigo = codigo
-    self.saldo = 0
 
-  def deposita(self, valor):
-    self.saldo += valor
-  
-  def __str__(self):
-    return "[>>Codigo {} Saldo {}<<]".format(self.codigo, self.saldo)
+class ContaCorrente:
+    def __init__(self, codigo):
+        self.codigo = codigo
+        self.saldo = 0
+
+    def deposita(self, valor):
+        self.saldo += valor
+
+    def __str__(self):
+        return "[>>Codigo {} Saldo {}<<]".format(self.codigo, self.saldo)
+
 
 conta_do_gui = ContaCorrente(15)
 
@@ -91,39 +92,43 @@ contas = [conta_do_gui, conta_da_dani]
 print(contas)
 
 for conta in contas:
-  print(conta)
-
+    print(conta)
 
 
 """Herança e Polimorfismo"""
 
 from abc import ABCMeta, abstractmethod
 
-class Conta(metaclass=ABCMeta):
-  def __init__(self, codigo):
-    self._codigo = codigo
-    self._saldo = 0
 
-  def deposita(self, valor):
-    self._saldo += valor
-  
-  @abstractmethod   #método criado pra que a gente não consiga instanciar objeto sem criar esse método. Se tentar, dá erro
-  def passa_o_mes(self):
-    pass
-  
-  def __str__(self):
-    return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+class Conta(metaclass=ABCMeta):
+    def __init__(self, codigo):
+        self._codigo = codigo
+        self._saldo = 0
+
+    def deposita(self, valor):
+        self._saldo += valor
+
+    @abstractmethod  # método criado pra que a gente não consiga instanciar objeto sem criar esse método. Se tentar, dá erro
+    def passa_o_mes(self):
+        pass
+
+    def __str__(self):
+        return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+
 
 print(Conta(88))
 
+
 class ContaCorrente(Conta):
-  def passa_o_mes(self):
-    self._saldo -= 2
-  
+    def passa_o_mes(self):
+        self._saldo -= 2
+
+
 class ContaPoupanca(Conta):
-  def passa_o_mes(self):
-    self._saldo *= 1.01
-    self._saldo -= 3
+    def passa_o_mes(self):
+        self._saldo *= 1.01
+        self._saldo -= 3
+
 
 conta16 = ContaCorrente(16)
 conta16.deposita(1000)
@@ -137,31 +142,35 @@ print(conta17)
 
 contas = [conta16, conta17]
 for conta in contas:
-  conta.passa_o_mes()  #ducktyping (não importa que uma seja corrente e outra poupança, são duas contas)
-  print(conta)
+    conta.passa_o_mes()  # ducktyping (não importa que uma seja corrente e outra poupança, são duas contas)
+    print(conta)
 
 """Array, evitaremos usar"""
 
 import array as arr
 
-arr.array("d", [1, 3.5])  #qdo cria um array, precisa falar o tipo (nesse caso "d") e todos os elementos do array. Normalmente não utilizado.
+arr.array(
+    "d", [1, 3.5]
+)  # qdo cria um array, precisa falar o tipo (nesse caso "d") e todos os elementos do array. Normalmente não utilizado.
 
-import numpy as np  #qdo precisamos usar arrays, ao invés de usar o de cima, usamos o numpy (biblioteca), bem comum em ciência de dados, desempenho alto na parte matemática.
+import numpy as np  # qdo precisamos usar arrays, ao invés de usar o de cima, usamos o numpy (biblioteca), bem comum em ciência de dados, desempenho alto na parte matemática.
 
-numeros = np.array ([1, 3.5])
+numeros = np.array([1, 3.5])
 
 numeros + 3
 
-class ContaSalario: 
-  def __init__(self, codigo):
-    self._codigo = codigo
-    self._saldo = 0
-  
-  def deposita(self, valor):
-    self._saldo += valor
-  
-  def __str__(self):
-      return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+
+class ContaSalario:
+    def __init__(self, codigo):
+        self._codigo = codigo
+        self._saldo = 0
+
+    def deposita(self, valor):
+        self._saldo += valor
+
+    def __str__(self):
+        return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+
 
 conta1 = ContaSalario(37)
 print(conta1)
@@ -169,104 +178,118 @@ print(conta1)
 conta2 = ContaSalario(37)
 print(conta2)
 
-conta1 == conta2   #o == busca valores de msm referência na memória, nesse caso, cada objeto tem um lugar na memória
+conta1 == conta2  # o == busca valores de msm referência na memória, nesse caso, cada objeto tem um lugar na memória
 
-class ContaSalario: 
-  def __init__(self, codigo):
-    self._codigo = codigo
-    self._saldo = 0
-  
-  def __eq__(self, outro):
-    return self._codigo == outro._codigo
 
-  def deposita(self, valor):
-    self._saldo += valor
-  
-  def __str__(self):
-      return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+class ContaSalario:
+    def __init__(self, codigo):
+        self._codigo = codigo
+        self._saldo = 0
+
+    def __eq__(self, outro):
+        return self._codigo == outro._codigo
+
+    def deposita(self, valor):
+        self._saldo += valor
+
+    def __str__(self):
+        return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+
 
 conta1 = ContaSalario(37)
 conta2 = ContaSalario(37)
-conta1 == conta2    #aqui deu q as contas são iguais pq eu defini na classe usando o método eq: se as contas tem o msm código(37), são iguais, msm não sendo o msm objeto
+conta1 == conta2  # aqui deu q as contas são iguais pq eu defini na classe usando o método eq: se as contas tem o msm código(37), são iguais, msm não sendo o msm objeto
 
-class ContaSalario: 
-  def __init__(self, codigo):
-    self._codigo = codigo
-    self._saldo = 0
-  
-  def __eq__(self, outro):
-    if type(outro) != ContaSalario:
-      return False
-    return self._codigo == outro._codigo and self._saldo == outro._saldo
 
-  def deposita(self, valor):
-    self._saldo += valor
-  
-  def __str__(self):
-      return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+class ContaSalario:
+    def __init__(self, codigo):
+        self._codigo = codigo
+        self._saldo = 0
+
+    def __eq__(self, outro):
+        if type(outro) != ContaSalario:
+            return False
+        return self._codigo == outro._codigo and self._saldo == outro._saldo
+
+    def deposita(self, valor):
+        self._saldo += valor
+
+    def __str__(self):
+        return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+
 
 conta1 = ContaSalario(37)
-conta2 = ContaCorrente(37)  
+conta2 = ContaCorrente(37)
 conta1 == conta2
 
 idades = [15, 87, 32, 65, 56, 32, 49, 37]
 
 for i in range(len(idades)):
-  print(i, idades[i])
+    print(i, idades[i])
 
 list(range(len(idades)))
 
 list(enumerate(idades))
 
 for valor in enumerate(idades):
-  print(valor)    #nesse tipo de for, ele gerou uma tupla.
+    print(valor)  # nesse tipo de for, ele gerou uma tupla.
 
-for indice, idade in enumerate(idades):   #qdo vc já pede os elementos dentro do for, está desempacotando a tupla (unpacking)
-  print(indice, idade)
+for indice, idade in enumerate(
+    idades
+):  # qdo vc já pede os elementos dentro do for, está desempacotando a tupla (unpacking)
+    print(indice, idade)
 
-usuarios = [
-    ("Guilherme", 37, 1981),
-    ("Daniela", 31, 1987),
-    ("Paulo", 39, 1979)
+usuarios = [("Guilherme", 37, 1981), ("Daniela", 31, 1987), ("Paulo", 39, 1979)]
 
-]
-
-for nome, idade, nascimento in usuarios: #qdo vc desempacota a tupla, vc pode pedir pro print só os valores que vc precisa msm, não é necessário printar todos os valores da tupla
-  print(nome)
+for (
+    nome,
+    idade,
+    nascimento,
+) in (
+    usuarios
+):  # qdo vc desempacota a tupla, vc pode pedir pro print só os valores que vc precisa msm, não é necessário printar todos os valores da tupla
+    print(nome)
 
 idades
 
-sorted(idades)  #ordena os itens da lista
+sorted(idades)  # ordena os itens da lista
 
 reversed(idades)
 
-sorted(idades, reverse = True)   #do maior pro menor
+sorted(idades, reverse=True)  # do maior pro menor
 
-idades.sort()   #o sorted só me mostra os itens ordenados, mas a lista original não é alterada. Esse .sort() altera a lista original
+idades.sort()  # o sorted só me mostra os itens ordenados, mas a lista original não é alterada. Esse .sort() altera a lista original
 
 idades
 
-nomes = ["Daniela", "Paulo", "Guilherme", "Marina"]  #sorted ordena str por ordem alfabética, maiúsculo p/ minúsculo
+nomes = [
+    "Daniela",
+    "Paulo",
+    "Guilherme",
+    "Marina",
+]  # sorted ordena str por ordem alfabética, maiúsculo p/ minúsculo
 sorted(nomes)
 
-class ContaSalario: 
-  def __init__(self, codigo):
-    self._codigo = codigo
-    self._saldo = 0
-  
-  def __eq__(self, outro):
-    if type(outro) != ContaSalario:
-      return False
-    return self._codigo == outro._codigo and self._saldo == outro._saldo
 
-  def __lt__(self, outro):
-    return self._saldo < outro._saldo
-  
-  def deposita(self, valor):
-    self._saldo += valor
-  
-  def __str__(self):
-      return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+class ContaSalario:
+    def __init__(self, codigo):
+        self._codigo = codigo
+        self._saldo = 0
+
+    def __eq__(self, outro):
+        if type(outro) != ContaSalario:
+            return False
+        return self._codigo == outro._codigo and self._saldo == outro._saldo
+
+    def __lt__(self, outro):
+        return self._saldo < outro._saldo
+
+    def deposita(self, valor):
+        self._saldo += valor
+
+    def __str__(self):
+        return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+
 
 conta_do_guilherme = ContaSalario(17)
 conta_do_guilherme.deposita(500)
@@ -280,55 +303,66 @@ conta_do_paulo.deposita(510)
 contas = [conta_do_guilherme, conta_da_daniela, conta_do_paulo]
 
 for conta in contas:
-  print(conta)
+    print(conta)
+
 
 def extrai_saldo(conta):
-  return conta._saldo
+    return conta._saldo
 
-sorted(contas, key=extrai_saldo)  #sorted sozinho não funciona em objeto. Aqui usei um atributo pra ordenar o objeto, no caso, o saldo.
+
+sorted(
+    contas, key=extrai_saldo
+)  # sorted sozinho não funciona em objeto. Aqui usei um atributo pra ordenar o objeto, no caso, o saldo.
 
 for conta in sorted(contas, key=extrai_saldo):
-  print(conta)
+    print(conta)
 
 from operator import attrgetter
 
-for conta in sorted(contas, key=attrgetter("_saldo")):   #pegar o _saldo não é boa prática, pq o underline indica que é atributo privado. Nesse caso, podemos usar o attrgetter pra puxar o atributo ao invés da função extrai_saldo, mas ainda não é o ideal.
-  print(conta)
+for conta in sorted(
+    contas, key=attrgetter("_saldo")
+):  # pegar o _saldo não é boa prática, pq o underline indica que é atributo privado. Nesse caso, podemos usar o attrgetter pra puxar o atributo ao invés da função extrai_saldo, mas ainda não é o ideal.
+    print(conta)
 
-from functools import total_ordering   #usa o total ordering pra poder ter acesso a diversas comparações de obj, desde que defina o igual (função eq) e menor (função lt)
+from functools import (
+    total_ordering,
+)  # usa o total ordering pra poder ter acesso a diversas comparações de obj, desde que defina o igual (função eq) e menor (função lt)
+
 
 @total_ordering
-class ContaSalario: 
-  def __init__(self, codigo):
-    self._codigo = codigo
-    self._saldo = 0
-  
-  def __eq__(self, outro):
-    if type(outro) != ContaSalario:
-      return False
-    return self._codigo == outro._codigo and self._saldo == outro._saldo
+class ContaSalario:
+    def __init__(self, codigo):
+        self._codigo = codigo
+        self._saldo = 0
 
-  def __lt__(self, outro):
-    if self._saldo != outro._saldo:
-        return self._saldo < outro._saldo  #pra não pegar o atributo _saldo, usamos a função lesser than (lt) pra comparar as contas e poder usar o sorted (q no fundo funciona como uma comparação entre os elementos pra ordenar)
-    return self._codigo < outro._codigo
-     
-  
-  def deposita(self, valor):
-    self._saldo += valor
-  
-  def __str__(self):
-      return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+    def __eq__(self, outro):
+        if type(outro) != ContaSalario:
+            return False
+        return self._codigo == outro._codigo and self._saldo == outro._saldo
 
-conta_do_guilherme < conta_da_daniela  #depois de usar o lt, permite fazer comparação dos objetos
+    def __lt__(self, outro):
+        if self._saldo != outro._saldo:
+            return (
+                self._saldo < outro._saldo
+            )  # pra não pegar o atributo _saldo, usamos a função lesser than (lt) pra comparar as contas e poder usar o sorted (q no fundo funciona como uma comparação entre os elementos pra ordenar)
+        return self._codigo < outro._codigo
+
+    def deposita(self, valor):
+        self._saldo += valor
+
+    def __str__(self):
+        return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+
+
+conta_do_guilherme < conta_da_daniela  # depois de usar o lt, permite fazer comparação dos objetos
 
 conta_do_guilherme > conta_da_daniela
 
-for conta in sorted(contas):   #depois de usar o lt consigo fazer o sorted dos objetos
-  print(conta)
+for conta in sorted(contas):  # depois de usar o lt consigo fazer o sorted dos objetos
+    print(conta)
 
-for conta in sorted(contas, key=attrgetter("_saldo", "_codigo")): 
-  print(conta)
+for conta in sorted(contas, key=attrgetter("_saldo", "_codigo")):
+    print(conta)
 
 conta_do_guilherme = ContaSalario(17)
 conta_do_guilherme.deposita(500)
@@ -342,7 +376,7 @@ conta_do_paulo.deposita(500)
 contas = [conta_do_guilherme, conta_da_daniela, conta_do_paulo]
 
 for conta in sorted(contas):
-  print(conta)
+    print(conta)
 
 conta_do_guilherme = ContaSalario(1700)
 conta_do_guilherme.deposita(500)
@@ -355,7 +389,6 @@ conta_do_paulo.deposita(500)
 
 contas = [conta_do_guilherme, conta_da_daniela, conta_do_paulo]
 
-conta_do_guilherme <= conta_da_daniela   #temos acesso a comparar <= pelo uso do total ordering lá na classe ContaSalario
+conta_do_guilherme <= conta_da_daniela  # temos acesso a comparar <= pelo uso do total ordering lá na classe ContaSalario
 
 conta_do_guilherme <= conta_do_paulo
-

@@ -16,52 +16,71 @@ assistiram
 
 len(assistiram)
 
-set(assistiram)   #conjunto no Python é representado aqui por vários elementos, que não possuem elementos repetidos (sets)
+set(
+    assistiram
+)  # conjunto no Python é representado aqui por vários elementos, que não possuem elementos repetidos (sets)
 
-set([1,2,3,1])
+set([1, 2, 3, 1])
 
-{4, 1,2,3,1}  #notação para criar um conjunto simples é a chaves
+{4, 1, 2, 3, 1}  # notação para criar um conjunto simples é a chaves
 
 for usuario in set(assistiram):
-  print(usuario)
+    print(usuario)
 
-usuarios_data_science = {15, 23, 43, 56}           #tenta acessar aleatoriamente um conjunto, você não possui indexação. Um acesso aleatório à uma posição, porque o que eu falei: não existe posição, contrário à lista
+usuarios_data_science = {
+    15,
+    23,
+    43,
+    56,
+}  # tenta acessar aleatoriamente um conjunto, você não possui indexação. Um acesso aleatório à uma posição, porque o que eu falei: não existe posição, contrário à lista
 usuarios_machine_learning = {13, 23, 56, 42}
 
-usuarios_data_science | usuarios_machine_learning   #forma de juntar dois conjuntos, operação de "ou", união dos 2 conjuntos
+usuarios_data_science | usuarios_machine_learning  # forma de juntar dois conjuntos, operação de "ou", união dos 2 conjuntos
 
-usuarios_data_science & usuarios_machine_learning    #Então eu quero quem fez o primeiro curso e o segundo curso, então é a operação de “e”
+(
+    usuarios_data_science & usuarios_machine_learning
+)  # Então eu quero quem fez o primeiro curso e o segundo curso, então é a operação de “e”
 
-usuarios_data_science - usuarios_machine_learning   #Eu quero mandar para quem enviou, para quem fez o Data Science menos quem já fez o Machine Learning
+(
+    usuarios_data_science - usuarios_machine_learning
+)  # Eu quero mandar para quem enviou, para quem fez o Data Science menos quem já fez o Machine Learning
 
-usuarios_data_science ^ usuarios_machine_learning   #Então fez isso ou isso, mas não pode ter feito os dois ao mesmo tempo. Esse é o "ou" exclusivo
+(
+    usuarios_data_science ^ usuarios_machine_learning
+)  # Então fez isso ou isso, mas não pode ter feito os dois ao mesmo tempo. Esse é o "ou" exclusivo
 
-usuarios = {1,5,76,34,52,13,17}
+usuarios = {1, 5, 76, 34, 52, 13, 17}
 len(usuarios)
 
-usuarios.add(13)    #adiciona no conjunto, mas nesse caso não add pq o 13 já tava lá /  Um conjunto, por padrão, em Python, ele é mutável. Podemos adicionar, remover, alterar, pode alterar conteúdos de dentro desse conjunto.
+usuarios.add(
+    13
+)  # adiciona no conjunto, mas nesse caso não add pq o 13 já tava lá /  Um conjunto, por padrão, em Python, ele é mutável. Podemos adicionar, remover, alterar, pode alterar conteúdos de dentro desse conjunto.
 len(usuarios)
 
 usuarios.add(765)
 len(usuarios)
 
-usuarios = frozenset(usuarios)     #conjunto imutável, congelado, não dá pra add nada lá dentro
+usuarios = frozenset(
+    usuarios
+)  # conjunto imutável, congelado, não dá pra add nada lá dentro
 usuarios
 
 type(usuarios)
 
 meu_texto = "Bem vindo meu nome é Guilherme eu gosto muito de nomes e tenho o meu cachorro e gosto muito de cachorro"
 
-set(meu_texto.split())   #transformei o texto em um conjunto de palavras, ele tirou as palavras repetidas tb
+set(
+    meu_texto.split()
+)  # transformei o texto em um conjunto de palavras, ele tirou as palavras repetidas tb
 
 """Dicionário (Mapa): Então um dicionário é uma situação clássica, uma agenda telefônica também, procuro o nome, traz o telefone, procura o nome, traz o e-mail, podia ser uma agenda de e-mails. é comum fazermos esse tipo de mapa, que chamamos aqui de chave-valor, então o mapa, ele indica o caminho dessa chave para esse valor."""
 
 aparicoes = {
-  "Guilherme" : 1,
-  "cachorro" : 2,
-  "nome" : 2,
-  "vindo" : 1
-}                   #isso é um dicionário, conjunto de chave e valor
+    "Guilherme": 1,
+    "cachorro": 2,
+    "nome": 2,
+    "vindo": 1,
+}  # isso é um dicionário, conjunto de chave e valor
 
 type(aparicoes)
 
@@ -69,9 +88,11 @@ aparicoes["Guilherme"]
 
 aparicoes["cachorro"]
 
-aparicoes["xpto"]     #dá erro pq não tá no dicionário
+aparicoes["xpto"]  # dá erro pq não tá no dicionário
 
-aparicoes = dict(Guilherme = 2, cachorro = 1)    # instanciar pelo construtor dict(). Quando criamos pelo construtor dict(), usamos uma outra forma, que é a chave, por exemplo (Guilherme = 2, cachorro = 1)
+aparicoes = dict(
+    Guilherme=2, cachorro=1
+)  # instanciar pelo construtor dict(). Quando criamos pelo construtor dict(), usamos uma outra forma, que é a chave, por exemplo (Guilherme = 2, cachorro = 1)
 aparicoes
 
 aparicoes["Carlos"] = 1
@@ -86,81 +107,110 @@ del aparicoes["Carlos"]
 
 aparicoes
 
-"cachorro" in aparicoes   #Perguntar se um elemento está dentro de um dicionário é perguntar se a chave está lá dentro.
+"cachorro" in aparicoes  # Perguntar se um elemento está dentro de um dicionário é perguntar se a chave está lá dentro.
 
 "Carlos" in aparicoes
 
-for elemento in aparicoes:   #Então o aparicoes é um iterável, e esse iterável retorna o quê? As chaves e não os valores, que é condizente com o in, certo? 
-  print(elemento)
+for (
+    elemento
+) in (
+    aparicoes
+):  # Então o aparicoes é um iterável, e esse iterável retorna o quê? As chaves e não os valores, que é condizente com o in, certo?
+    print(elemento)
 
 for elemento in aparicoes.keys():
-  print(elemento)
+    print(elemento)
 
 for elemento in aparicoes.values():
-  print(elemento)
+    print(elemento)
 
 1 in aparicoes.values()
 
-for elemento in aparicoes.keys():    #uma das maneiras é passarmos pela lista da esquerda, das chaves. Outra maneira, pela lista da direita, dos valores. Agora eu queria passar linha a linha, meio que linha a linh
-  print(elemento, aparicoes[elemento])
+for (
+    elemento
+) in (
+    aparicoes.keys()
+):  # uma das maneiras é passarmos pela lista da esquerda, das chaves. Outra maneira, pela lista da direita, dos valores. Agora eu queria passar linha a linha, meio que linha a linh
+    print(elemento, aparicoes[elemento])
 
-for elemento in aparicoes.items():   #Então ao invés de eu passar pelas chaves, eu passo pelos items(). Então um item é uma dupla, pensa que um item é uma dupla.
-  print(elemento)       # linha, cada item, é uma tupla de tamanho 2. Por que escolheram tupla e não lista? Bom, não queremos mudar, porque não quero colocar um terceiro elemento ali, eu tenho exatamente dois, o primeiro elemento representa sempre a chave, o segundo elemento representa sempre o valor. Então é tudo a ver com tupla e não com lista, por isso que são tuplas aqui
+for (
+    elemento
+) in (
+    aparicoes.items()
+):  # Então ao invés de eu passar pelas chaves, eu passo pelos items(). Então um item é uma dupla, pensa que um item é uma dupla.
+    print(
+        elemento
+    )  # linha, cada item, é uma tupla de tamanho 2. Por que escolheram tupla e não lista? Bom, não queremos mudar, porque não quero colocar um terceiro elemento ali, eu tenho exatamente dois, o primeiro elemento representa sempre a chave, o segundo elemento representa sempre o valor. Então é tudo a ver com tupla e não com lista, por isso que são tuplas aqui
 
-for chave, valor in aparicoes.items():    #E se são tuplas aqui, é o mesmo que fosse lista, podemos desempacotar de uma vez só
-  print(chave, "=", valor)
+for (
+    chave,
+    valor,
+) in (
+    aparicoes.items()
+):  # E se são tuplas aqui, é o mesmo que fosse lista, podemos desempacotar de uma vez só
+    print(chave, "=", valor)
 
 ["palavra {}".format(chave) for chave in aparicoes.keys()]
 
 meu_texto = "Bem vindo meu nome é Guilherme eu gosto muito de nomes e tenho o meu cachorro e gosto muito de cachorro"
 meu_texto.lower()
 meu_texto = meu_texto.lower()
-aparicoes = {}      #como contar aparicoes de palavras em um texto
+aparicoes = {}  # como contar aparicoes de palavras em um texto
 for palavra in meu_texto.split():
-  ate_agora = aparicoes.get(palavra, 0)
-  aparicoes[palavra] = ate_agora + 1
+    ate_agora = aparicoes.get(palavra, 0)
+    aparicoes[palavra] = ate_agora + 1
 
 aparicoes
 
-from collections import defaultdict   #dicionário com valor padrão (ficou meio confuso ainda)
+from collections import (
+    defaultdict,
+)  # dicionário com valor padrão (ficou meio confuso ainda)
 
 aparicoes = defaultdict(int)
 
 for palavra in meu_texto.split():
-  ate_agora = aparicoes.get(palavra, 0)
-  aparicoes[palavra] = ate_agora + 1
+    ate_agora = aparicoes.get(palavra, 0)
+    aparicoes[palavra] = ate_agora + 1
 
 aparicoes
 
 dicionario = defaultdict(int)
-dicionario['guilherme']
+dicionario["guilherme"]
 
-dicionario['guilherme'] = 15
-dicionario['guilherme']
+dicionario["guilherme"] = 15
+dicionario["guilherme"]
 
 aparicoes = defaultdict(int)
 
 for palavra in meu_texto.split():
-  aparicoes[palavra] += 1     #erar o nosso contador de aparições de palavras em um texto.
+    aparicoes[
+        palavra
+    ] += 1  # erar o nosso contador de aparições de palavras em um texto.
 
 aparicoes
 
-class Conta:
-  def __init__(self):
-    print("Criando uma conta")
 
-contas = defaultdict(Conta)      #olha, esse dicionário referenciado pela variável contas, toda vez que eu buscar alguma conta que não está lá ainda, vai chamar essa função aqui, que é o nosso construtor, e criar uma conta nova
+class Conta:
+    def __init__(self):
+        print("Criando uma conta")
+
+
+contas = defaultdict(
+    Conta
+)  # olha, esse dicionário referenciado pela variável contas, toda vez que eu buscar alguma conta que não está lá ainda, vai chamar essa função aqui, que é o nosso construtor, e criar uma conta nova
 contas[15]
 
 from collections import Counter
 
-aparicoes = Counter()    #contador por padrão tem valor 0
+aparicoes = Counter()  # contador por padrão tem valor 0
 for palavra in meu_texto.split():
-  aparicoes[palavra] += 1
+    aparicoes[palavra] += 1
 
 aparicoes
 
-aparicoes = Counter(meu_texto.split())   #Então eu já vou passar um iterável para esse contador: vou criar um contador e aqui no contador eu já passo meu_texto.split() que é um iterável. Adivinha o que ele vai fazer? Contar. É um contador. Então ficou uma linha de código
+aparicoes = Counter(
+    meu_texto.split()
+)  # Então eu já vou passar um iterável para esse contador: vou criar um contador e aqui no contador eu já passo meu_texto.split() que é um iterável. Adivinha o que ele vai fazer? Contar. É um contador. Então ficou uma linha de código
 
 aparicoes
 
@@ -270,36 +320,59 @@ aparicoes = Counter(texto1.lower())
 total_de_caracteres = sum(aparicoes.values())
 print(total_de_caracteres)
 
-for letra, frequencia in aparicoes.items():   #Eu quero pegar a letra, por exemplo a letra "A", e falar: a letra "A" apareceu 182 vezes. Se ela apareceu 182 de 1821, isso significa 10%, que é 0.1. 10% das aparições nesse texto1 são da letra "A"
-    tupla=(letra, frequencia / total_de_caracteres)
+for (
+    letra,
+    frequencia,
+) in (
+    aparicoes.items()
+):  # Eu quero pegar a letra, por exemplo a letra "A", e falar: a letra "A" apareceu 182 vezes. Se ela apareceu 182 de 1821, isso significa 10%, que é 0.1. 10% das aparições nesse texto1 são da letra "A"
+    tupla = (letra, frequencia / total_de_caracteres)
     print(tupla)
 
-proporcoes = [(letra, frequencia / total_de_caracteres) for letra, frequencia in aparicoes.items()] #transformou tupla em lista, depois a lista em dicionário
-proporcoes = Counter(dict(proporcoes))    #no dicionário colocou um contador pq o contador tem a propriedade most_common, pra achar as letras + frequentes no texto
-proporcoes.most_common(10)   #achei os 10 mais comuns
+proporcoes = [
+    (letra, frequencia / total_de_caracteres) for letra, frequencia in aparicoes.items()
+]  # transformou tupla em lista, depois a lista em dicionário
+proporcoes = Counter(
+    dict(proporcoes)
+)  # no dicionário colocou um contador pq o contador tem a propriedade most_common, pra achar as letras + frequentes no texto
+proporcoes.most_common(10)  # achei os 10 mais comuns
 
-def analisa_frequencia_de_letras(texto):     #cria uma função pra analisar as letras mais comuns no texto, usando como base o código anterior.
-  aparicoes = Counter(texto.lower())
-  total_de_caracteres = sum(aparicoes.values())
 
-  proporcoes = [(letra, frequencia / total_de_caracteres) for letra, frequencia in aparicoes.items()]
-  proporcoes = Counter(dict(proporcoes))
-  mais_comuns = proporcoes.most_common(10)
-  for caractere, proporcao in mais_comuns:
-    print((caractere, proporcao))
+def analisa_frequencia_de_letras(
+    texto,
+):  # cria uma função pra analisar as letras mais comuns no texto, usando como base o código anterior.
+    aparicoes = Counter(texto.lower())
+    total_de_caracteres = sum(aparicoes.values())
+
+    proporcoes = [
+        (letra, frequencia / total_de_caracteres)
+        for letra, frequencia in aparicoes.items()
+    ]
+    proporcoes = Counter(dict(proporcoes))
+    mais_comuns = proporcoes.most_common(10)
+    for caractere, proporcao in mais_comuns:
+        print((caractere, proporcao))
+
 
 analisa_frequencia_de_letras(texto1)
 
-def analisa_frequencia_de_letras(texto):   #funcão pra analisar frequencia das letras melhorada, com valores em porcentagem
-  aparicoes = Counter(texto.lower())
-  total_de_caracteres = sum(aparicoes.values())
 
-  proporcoes = [(letra, frequencia / total_de_caracteres) for letra, frequencia in aparicoes.items()]
-  proporcoes = Counter(dict(proporcoes))
-  mais_comuns = proporcoes.most_common(10)
-  for caractere, proporcao in mais_comuns:
-    print("{} => {:.2f}%".format(caractere, proporcao * 100))
+def analisa_frequencia_de_letras(
+    texto,
+):  # funcão pra analisar frequencia das letras melhorada, com valores em porcentagem
+    aparicoes = Counter(texto.lower())
+    total_de_caracteres = sum(aparicoes.values())
+
+    proporcoes = [
+        (letra, frequencia / total_de_caracteres)
+        for letra, frequencia in aparicoes.items()
+    ]
+    proporcoes = Counter(dict(proporcoes))
+    mais_comuns = proporcoes.most_common(10)
+    for caractere, proporcao in mais_comuns:
+        print("{} => {:.2f}%".format(caractere, proporcao * 100))
+
+
 analisa_frequencia_de_letras(texto1)
 
 analisa_frequencia_de_letras(texto2)
-
